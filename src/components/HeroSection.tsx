@@ -66,7 +66,7 @@ export default function HeroSection() {
           className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed"
         >
           Deterministic canonical encoding for byte identity establishment.
-          Strict boundary enforcement between serialization and deserialization layers.
+          Strict boundary enforcement between serialization, deserialization, and verification layers.
         </motion.p>
 
         {/* Feature pills */}
@@ -87,6 +87,10 @@ export default function HeroSection() {
           <div className="flex items-center gap-2 px-4 py-2 rounded-lg border border-purple-500/20 bg-purple-500/5">
             <Lock className="w-4 h-4 text-purple-400" />
             <span className="text-sm text-purple-300">Strict Decoding</span>
+          </div>
+          <div className="flex items-center gap-2 px-4 py-2 rounded-lg border border-indigo-500/20 bg-indigo-500/5">
+            <Shield className="w-4 h-4 text-indigo-400" />
+            <span className="text-sm text-indigo-300">Actuation Verification</span>
           </div>
         </motion.div>
 

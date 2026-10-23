@@ -2,6 +2,7 @@ import HeroSection from './components/HeroSection';
 import ArchitectureSection from './components/ArchitectureSection';
 import CodecPlayground from './components/CodecPlayground';
 import ErrorReference from './components/ErrorReference';
+import VerificationSection from './components/VerificationSection';
 import CodeViewer from './components/CodeViewer';
 import Footer from './components/Footer';
 
@@ -12,6 +13,7 @@ export default function App() {
       <ArchitectureSection />
       <CodecPlayground />
       <ErrorReference />
+      <VerificationSection />
       <CodeViewer />
       <Footer />
     </div>

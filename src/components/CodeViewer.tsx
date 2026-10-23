@@ -115,6 +115,47 @@ impl CanonicalDecode for TaggedPredecessor {
 
         Ok(result)
     }
+}
+
+// ─────────────────────────────────────────────────────────────
+// Verification Layer
+// ─────────────────────────────────────────────────────────────
+
+/// Monotonic hardware time witness for replay protection.
+#[derive(Clone, Debug)]
+pub struct MonotonicTimeWitness {
+    hardware_counter: u64,
+    epoch_ns: u64,
+    source: AttestationSource,
+}
+
+/// Cryptographically bound verification result.
+#[derive(Clone, Debug)]
+pub struct VerifiedEvidence {
+    artifact_hash: [u8; 32],
+    policy_version: PolicyId,
+    time_bound: TimeRange,
+    attestation: AttestationToken,
+}
+
+/// Error variants at the constitutional ABI boundary.
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+pub enum CAbiBoundaryError {
+    PolicyViolation,
+    TimeRegression,
+    ArtifactMismatch,
+    AttestationFailure,
+    StaleWitness,
+}
+
+/// Evaluates raw canonical state evidence against active constitutional
+/// policy and monotonic hardware time context prior to actuation execution.
+pub trait CAbiBoundaryVerifier {
+    fn verify_actuation(
+        &self,
+        artifact: &CanonicalArtifact,
+        time_witness: &MonotonicTimeWitness,
+    ) -> Result<VerifiedEvidence, CAbiBoundaryError>;
 }`;
 
 function highlightRust(code: string): string {
